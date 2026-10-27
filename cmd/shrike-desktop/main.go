@@ -88,7 +88,7 @@ func run() int {
 		// A desktop app that dies without a window looks like a crash. Show what
 		// broke — almost always the PostgreSQL DSN — in a window instead.
 		log.Printf("%v", err)
-		showFatal(err, *devtools)
+		showFatal(err, *devtools, filepath.Join(base, "config.json"))
 		return 1
 	}
 	log.Printf("[desktop] 窗口地址: %s", inst.URL)
@@ -100,7 +100,7 @@ func run() int {
 
 // fatalPage is the standalone error document. It pulls no assets and no fonts:
 // it has to render even when the backend never came up.
-func fatalPage(err error) string {
+func fatalPage(err error, cfgPath string) string {
 	msg := html.EscapeString(err.Error())
 	return `<!doctype html><html lang="zh-CN"><meta charset="utf-8">
 <body style="margin:0;font:14px/1.6 -apple-system,'PingFang SC',sans-serif;color:#1c1917;background:#fafafa">
@@ -111,9 +111,10 @@ func fatalPage(err error) string {
   <pre style="white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid #e7e5e4;border-radius:10px;padding:14px;color:#b91c1c">` + msg + `</pre>
   <h2 style="font-size:15px;margin-top:28px">怎么修</h2>
   <ul style="color:#57534e;padding-left:20px">
-    <li>确认 PostgreSQL 在跑，且 <code>config.json</code> 里的 host/port/user/dbname 对得上。</li>
-    <li>或者设环境变量 <code>SHRIKE_PG_DSN</code> 直接给完整连接串。</li>
-    <li>配置目录：<code>~/Library/Application Support/SHRIKE</code>（可用 <code>-home</code> 改）。</li>
+    <li>确认 PostgreSQL 在跑（Windows 装完默认端口 <b>5432</b>，不是 5433），且配置文件里的 host/port/user/password/dbname 对得上。</li>
+    <li>或者设环境变量 <code>SHRIKE_PG_DSN</code> 直接给完整连接串，例如<br>
+        <code>postgres://shrike:shrike@127.0.0.1:5432/shrike?sslmode=disable</code></li>
+    <li>配置文件：<code>` + html.EscapeString(cfgPath) + `</code></li>
   </ul>
   <p style="color:#a8a29e;font-size:12px;margin-top:28px">改完重新打开本应用即可。</p>
 </div></body></html>`
@@ -158,12 +159,13 @@ func seedConfig(dst, base string) {
 	tpl := `{
   "database": {
     "host": "127.0.0.1",
-    "port": 5433,
+    "port": 5432,
     "user": "shrike",
     "password": "",
     "dbname": "shrike",
     "sslmode": "disable"
   },
+  "_comment": "改这里的 host/port/user/password/dbname 指向你的 PostgreSQL；也可以在系统里设环境变量 SHRIKE_PG_DSN 直接给完整连接串（优先级更高）。",
   "skill_dir": "` + filepath.ToSlash(filepath.Join(base, "skills")) + `"
 }
 `

@@ -81,8 +81,8 @@ func runUI(inst *app.Instance, _ bool) int {
 // showFatal on Windows has no window of our own to draw into, so the error page
 // goes to a temp HTML file opened by the default browser. Same information, no
 // console dependency (the exe is built with -H windowsgui).
-func showFatal(err error, _ bool) {
-	page := fatalPage(err)
+func showFatal(err error, _ bool, cfgPath string) {
+	page := fatalPage(err, cfgPath)
 	path := filepath.Join(os.TempDir(), "shrike-startup-error.html")
 	if werr := os.WriteFile(path, []byte(page), 0o644); werr != nil {
 		log.Printf("[desktop] 写错误页失败: %v（原始错误: %v）", werr, err)

@@ -64,11 +64,11 @@ func runUI(inst *app.Instance, devtools bool) int {
 
 // showFatal renders a boot failure in a window, so the user sees the reason
 // (unreachable database, port taken, …) rather than a process that vanishes.
-func showFatal(err error, devtools bool) {
+func showFatal(err error, devtools bool, cfgPath string) {
 	w := webview.New(devtools)
 	defer w.Destroy()
 	w.SetTitle(windowTitle + " — 启动失败")
 	w.SetSize(760, 480, webview.HintNone)
-	w.SetHtml(fatalPage(err))
+	w.SetHtml(fatalPage(err, cfgPath))
 	w.Run()
 }
