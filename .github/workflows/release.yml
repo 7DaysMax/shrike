@@ -153,9 +153,36 @@ jobs:
             dist/desktop/*.dmg
             dist/desktop/*-macos-universal-app.zip
 
+  # ④b 小工具：多代理轮询器（socks5 入口 → 列表轮询），所有平台各给一份
+  tools:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - { goos: windows, goarch: amd64, ext: ".exe" }
+          - { goos: linux, goarch: amd64, ext: "" }
+          - { goos: darwin, goarch: arm64, ext: "" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+          cache: true
+      - name: Build proxrotate
+        env:
+          CGO_ENABLED: "0"
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+        run: |
+          go build -trimpath -ldflags "-s -w"             -o "proxrotate-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}" ./tools/proxrotate
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tool-proxrotate-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: "proxrotate-*"
+
   # ⑤ 汇总所有包 → 创建 GitHub Release
   release:
-    needs: [binaries, desktop-windows, desktop-macos]
+    needs: [binaries, desktop-windows, desktop-macos, tools]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
