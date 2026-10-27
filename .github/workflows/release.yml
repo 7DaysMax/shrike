@@ -174,11 +174,12 @@ jobs:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
         run: |
-          go build -trimpath -ldflags "-s -w"             -o "proxrotate-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}" ./tools/proxrotate
+          go build -trimpath -ldflags "-s -w" -o "proxrotate-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}" ./tools/proxrotate
+          zip -q -9 "proxrotate-${{ matrix.goos }}-${{ matrix.goarch }}.zip" "proxrotate-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}"
       - uses: actions/upload-artifact@v4
         with:
-          name: tool-proxrotate-${{ matrix.goos }}-${{ matrix.goarch }}
-          path: "proxrotate-*"
+          name: pkg-proxrotate-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: "proxrotate-*.zip"
 
   # ⑤ 汇总所有包 → 创建 GitHub Release
   release:

@@ -23,6 +23,7 @@ package main
 
 import (
 	"bufio"
+	"encoding/base64"
 	"encoding/binary"
 	"flag"
 	"fmt"
@@ -37,9 +38,10 @@ import (
 )
 
 type upstream struct {
-	addr string
-	user string
-	pass string
+	scheme string // socks5 | http
+	addr   string
+	user   string
+	pass   string
 
 	fails    int32
 	coolTill atomic.Int64 // unix nano
@@ -87,21 +89,26 @@ func parseLine(line string) *upstream {
 		return nil
 	}
 	// scheme://[user:pass@]host:port
+	scheme := "socks5"
 	if i := strings.Index(s, "://"); i > 0 {
+		scheme = strings.ToLower(s[:i])
+		if scheme == "https" {
+			scheme = "http" // 上游 TLS 由代理自己决定，这里统一按 CONNECT 处理
+		}
 		s = s[i+3:]
 	}
 	if at := strings.LastIndex(s, "@"); at >= 0 {
 		cred, host := s[:at], s[at+1:]
 		u, p, _ := strings.Cut(cred, ":")
-		return &upstream{addr: host, user: u, pass: p}
+		return &upstream{scheme: scheme, addr: host, user: u, pass: p}
 	}
 	// host:port:user:pass
 	parts := strings.Split(s, ":")
 	if len(parts) == 4 {
-		return &upstream{addr: parts[0] + ":" + parts[1], user: parts[2], pass: parts[3]}
+		return &upstream{scheme: scheme, addr: parts[0] + ":" + parts[1], user: parts[2], pass: parts[3]}
 	}
 	if len(parts) == 2 {
-		return &upstream{addr: s}
+		return &upstream{scheme: scheme, addr: s}
 	}
 	log.Printf("[rotate] 跳过无法解析的行: %q", line)
 	return nil
@@ -123,8 +130,69 @@ func loadFile(path string) ([]*upstream, error) {
 	return out, sc.Err()
 }
 
-// dialUpstream 以 socks5 客户端身份连到上游并请求它连 target（域名透传）。
+// dialUpstream 按上游类型建隧道：socks5 走 RFC1928，http 走 CONNECT。
 func dialUpstream(u *upstream, targetHost string, targetPort uint16) (net.Conn, error) {
+	if u.scheme == "http" {
+		return dialHTTPUpstream(u, targetHost, targetPort)
+	}
+	return dialSocks5Upstream(u, targetHost, targetPort)
+}
+
+// dialHTTPUpstream 用 HTTP CONNECT 打洞（Basic 认证，域名交给代理解析）。
+func dialHTTPUpstream(u *upstream, targetHost string, targetPort uint16) (net.Conn, error) {
+	c, err := net.DialTimeout("tcp", u.addr, 10*time.Second)
+	if err != nil {
+		return nil, err
+	}
+	_ = c.SetDeadline(time.Now().Add(20 * time.Second))
+	target := net.JoinHostPort(targetHost, fmt.Sprint(targetPort))
+	req := "CONNECT " + target + " HTTP/1.1\r\nHost: " + target + "\r\nProxy-Connection: Keep-Alive\r\n"
+	if u.user != "" {
+		req += "Proxy-Authorization: Basic " + base64.StdEncoding.EncodeToString([]byte(u.user+":"+u.pass)) + "\r\n"
+	}
+	req += "\r\n"
+	if _, err = io.WriteString(c, req); err != nil {
+		c.Close()
+		return nil, err
+	}
+	br := bufio.NewReader(c)
+	line, err := br.ReadString('\n')
+	if err != nil {
+		c.Close()
+		return nil, err
+	}
+	if !strings.Contains(line, " 200") {
+		c.Close()
+		return nil, fmt.Errorf("HTTP 上游拒绝: %s", strings.TrimSpace(line))
+	}
+	for { // 吃掉剩余响应头
+		l, err := br.ReadString('\n')
+		if err != nil {
+			c.Close()
+			return nil, err
+		}
+		if l == "\r\n" || l == "\n" {
+			break
+		}
+	}
+	_ = c.SetDeadline(time.Time{})
+	if br.Buffered() > 0 { // CONNECT 之后可能已有目标侧数据
+		head, _ := br.Peek(br.Buffered())
+		_ = head
+	}
+	return &bufferedConn{Conn: c, r: br}, nil
+}
+
+// bufferedConn 保留 CONNECT 响应后可能已读入的字节。
+type bufferedConn struct {
+	net.Conn
+	r *bufio.Reader
+}
+
+func (b *bufferedConn) Read(p []byte) (int, error) { return b.r.Read(p) }
+
+// dialSocks5Upstream 以 socks5 客户端身份连到上游并请求它连 target（域名透传）。
+func dialSocks5Upstream(u *upstream, targetHost string, targetPort uint16) (net.Conn, error) {
 	c, err := net.DialTimeout("tcp", u.addr, 10*time.Second)
 	if err != nil {
 		return nil, err
