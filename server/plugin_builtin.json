@@ -1,0 +1,270 @@
+[
+  {
+    "id": "artex.core",
+    "name": "工作台宿主",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "required": true,
+    "description": "基础布局、身份与插件管理保持可用。",
+    "contributions": [
+      {
+        "point": "command",
+        "id": "settings",
+        "label": "打开设置",
+        "command": "/settings",
+        "target": "host.settings.general"
+      },
+      {
+        "point": "command",
+        "id": "plugins",
+        "label": "插件管理",
+        "command": "/plugins",
+        "target": "host.settings.plugins"
+      },
+      {
+        "point": "command",
+        "id": "model",
+        "label": "选择当前会话模型",
+        "command": "/model",
+        "target": "host.inference.model"
+      },
+      {
+        "point": "command",
+        "id": "effort",
+        "label": "调整思考强度",
+        "command": "/effort",
+        "target": "host.inference.effort"
+      }
+    ]
+  },
+  {
+    "id": "artex.files",
+    "name": "文件工作区",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "dependencies": [
+      "artex.core"
+    ],
+    "contributions": [
+      {
+        "point": "panel",
+        "id": "files",
+        "label": "文件",
+        "renderer": "builtin.files",
+        "order": 10
+      },
+      {
+        "point": "panel",
+        "id": "file",
+        "label": "文件预览",
+        "renderer": "builtin.file",
+        "hidden": true
+      },
+      {
+        "point": "command",
+        "id": "files",
+        "label": "打开文件",
+        "command": "/files",
+        "target": "files"
+      },
+      {
+        "point": "view",
+        "id": "files",
+        "label": "文件",
+        "target": "files",
+        "order": 10
+      }
+    ]
+  },
+  {
+    "id": "artex.terminal",
+    "name": "终端工作区",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "dependencies": [
+      "artex.core"
+    ],
+    "contributions": [
+      {
+        "point": "panel",
+        "id": "terminal",
+        "label": "终端",
+        "renderer": "builtin.terminal",
+        "multiple": true,
+        "order": 20
+      },
+      {
+        "point": "command",
+        "id": "terminal",
+        "label": "打开终端",
+        "command": "/terminal",
+        "target": "terminal"
+      },
+      {
+        "point": "view",
+        "id": "terminal",
+        "label": "终端",
+        "target": "terminal",
+        "order": 20
+      }
+    ]
+  },
+  {
+    "id": "artex.browser",
+    "name": "浏览器工作区",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "dependencies": [
+      "artex.core"
+    ],
+    "contributions": [
+      {
+        "point": "panel",
+        "id": "browser",
+        "label": "浏览器",
+        "renderer": "builtin.browser",
+        "multiple": true,
+        "order": 30
+      },
+      {
+        "point": "command",
+        "id": "browser",
+        "label": "打开浏览器",
+        "command": "/browser",
+        "target": "browser"
+      },
+      {
+        "point": "view",
+        "id": "browser",
+        "label": "浏览器",
+        "target": "browser",
+        "order": 30
+      }
+    ]
+  },
+  {
+    "id": "artex.tasks-ui",
+    "name": "任务界面适配器",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "description": "启停本插件影响界面入口，不停止正在运行的任务引擎。",
+    "dependencies": [
+      "artex.core"
+    ],
+    "contributions": [
+      {
+        "point": "panel",
+        "id": "tasks",
+        "label": "任务与目标",
+        "renderer": "builtin.tasks",
+        "order": 40
+      },
+      {
+        "point": "panel",
+        "id": "task",
+        "label": "任务详情",
+        "renderer": "builtin.task",
+        "hidden": true
+      },
+      {
+        "point": "command",
+        "id": "tasks",
+        "label": "查看任务",
+        "command": "/tasks",
+        "target": "tasks"
+      }
+    ]
+  },
+  {
+    "id": "artex.approvals-ui",
+    "name": "审批界面",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "dependencies": [
+      "artex.core"
+    ],
+    "contributions": [
+      {
+        "point": "panel",
+        "id": "approvals",
+        "label": "待审批",
+        "renderer": "builtin.approvals",
+        "order": 50
+      }
+    ]
+  },
+  {
+    "id": "artex.settings-ui",
+    "name": "业务设置界面",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "dependencies": [
+      "artex.core"
+    ],
+    "contributions": [
+      {
+        "point": "settings",
+        "id": "models",
+        "label": "模型与账号",
+        "renderer": "builtin.models",
+        "order": 10
+      },
+      {
+        "point": "settings",
+        "id": "agents",
+        "label": "Agent",
+        "renderer": "builtin.agents",
+        "order": 20
+      },
+      {
+        "point": "settings",
+        "id": "mcp",
+        "label": "MCP 服务",
+        "renderer": "builtin.mcp",
+        "order": 30
+      },
+      {
+        "point": "settings",
+        "id": "skills",
+        "label": "技能",
+        "renderer": "builtin.skills",
+        "order": 40
+      },
+      {
+        "point": "settings",
+        "id": "tools",
+        "label": "自定义工具",
+        "renderer": "builtin.tools",
+        "order": 50
+      },
+      {
+        "point": "settings",
+        "id": "permissions",
+        "label": "审批规则",
+        "renderer": "builtin.permissions",
+        "order": 60
+      },
+      {
+        "point": "settings",
+        "id": "notifications",
+        "label": "通知",
+        "renderer": "builtin.notifications",
+        "order": 70
+      },
+      {
+        "point": "settings",
+        "id": "automations",
+        "label": "自动化",
+        "renderer": "builtin.automations",
+        "order": 80
+      },
+      {
+        "point": "settings",
+        "id": "system",
+        "label": "系统",
+        "renderer": "builtin.system",
+        "order": 90
+      }
+    ]
+  }
+]

@@ -1,0 +1,90 @@
+{
+  "deepseek": {
+    "file": "deepseek.svg",
+    "source": "https://fe-static.deepseek.com/chat/favicon.svg",
+    "official_site": "https://chat.deepseek.com",
+    "sha256": "90d7e400ca261d28dfb7982bfade335912b3a27a620faee9a787f8a52164fd43"
+  },
+  "openai": {
+    "file": "openai.ico",
+    "source": "https://cdn.oaistatic.com/assets/favicon-miwirzcw.ico",
+    "sha256": "b3cc4a8e4c1d4890d93c549f8349b0abca4732535d8e465a65499d302f28e63f"
+  },
+  "anthropic": {
+    "file": "anthropic.png",
+    "source": "https://assets.claude.com/95a868946ac8a31e5ff832e2899f294aa368b836.png?w=32&amp;h=32",
+    "official_site": "https://claude.ai",
+    "sha256": "4004381309500f25e49a1ae639912ce307ea81da74cc383954a1ac8b9d343fe6"
+  },
+  "glm": {
+    "file": "glm.png",
+    "source": "https://bigmodel.cn/static/images/favicon.png",
+    "official_site": "https://bigmodel.cn",
+    "sha256": "94ff9c00af67774e5178428942a6e0a9952c7e2f3aba4c25f3b05c782841ee4c"
+  },
+  "zai": {
+    "file": "zai.svg",
+    "source": "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    "official_site": "https://chat.z.ai",
+    "sha256": "07a45e8e35b0b631ed2c68cd1cb041f9721b1ceeb0bd0e34f1459b0304a741c7"
+  },
+  "gemini": {
+    "file": "gemini.svg",
+    "source": "https://www.gstatic.com/lamda/images/gemini_sparkle_aurora_33f86dc0c0257da337c63.svg",
+    "sha256": "f56df33f86dc0c0257da337c63bf7ad68c0a1b27b796ec707e147984351bccb3"
+  },
+  "qwen": {
+    "file": "qwen.png",
+    "source": "https://img.alicdn.com/imgextra/i4/O1CN01OXv3EM1FN8t9W4P79_!!6000000000474-2-tps-80-80.png",
+    "official_site": "https://qwen.ai",
+    "sha256": "cd9390bc4209c319121d111f3a1f535b3c7dd909b8f860d41acc9744138d58df"
+  },
+  "kimi": {
+    "file": "kimi.ico",
+    "source": "https://www.kimi.com/favicon-light.ico",
+    "official_site": "https://www.kimi.com",
+    "sha256": "df91c1ecf1d4894cf05845cdce44549ed3ccca3478b97a70972d1bc82ac4f2d1"
+  },
+  "minimax": {
+    "file": "minimax.ico",
+    "source": "https://www.minimax.io/favicon.ico",
+    "official_site": "https://www.minimax.io",
+    "sha256": "43ce4c9b9e627b391a116cd5da09e4c062d9c4e3d585509c65a4a3d16f386256"
+  },
+  "xai": {
+    "file": "xai.png",
+    "source": "https://avatars.githubusercontent.com/u/130314967?v=4?s=128",
+    "organization": "https://github.com/xai-org",
+    "sha256": "0bf702b7ba6ca49d44d796e84a22f4978dac0e3b33ef689c175a45f0b6b2cb54"
+  },
+  "mistral": {
+    "file": "mistral.png",
+    "source": "https://avatars.githubusercontent.com/u/132372032?v=4?s=128",
+    "organization": "https://github.com/mistralai",
+    "sha256": "ed790134d4de450922d4626ec81345cbb89c2c38ebd3346bc6a9f1bbdc254c15"
+  },
+  "doubao": {
+    "file": "doubao.png",
+    "source": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/favicon/new-doubao/64x64.png",
+    "official_site": "https://www.doubao.com",
+    "sha256": "967f66980a35f2187841193d625693d233d7c451774ecffaebfa19e8884c3257"
+  },
+  "stepfun": {
+    "file": "stepfun.svg",
+    "source": "https://www.stepfun.com/step_favicon.svg",
+    "official_site": "https://www.stepfun.com",
+    "sha256": "155d5901d2974785f178e186f3a461e80d4406b1907c6ae4d27936f6e301cfa1"
+  },
+  "ollama": {
+    "file": "ollama.png",
+    "source": "https://ollama.com/public/apple-touch-icon.png",
+    "official_site": "https://ollama.com",
+    "sha256": "8a5d4f0444d756d1d64c6615eb163ecd71fba180bd07c4199e88461c921778d1"
+  },
+  "meta": {
+    "file": "meta.png",
+    "source": "https://avatars.githubusercontent.com/u/153379578?v=4?s=128",
+    "organization": "https://github.com/meta-llama",
+    "sha256": "739403e3e9c4863d91065b08e17bd05d5feba828b41d354944997adf1db8d34e"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "manifest": {
+    "id": "example.task-board",
+    "name": "任务概览示例",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "description": "独立 UI 插件包；演示导航、命令、面板和宿主能力调用。",
+    "dependencies": [
+      "artex.core"
+    ],
+    "permissions": [
+      "host.tasks.list"
+    ],
+    "contributions": [
+      {
+        "point": "panel",
+        "id": "board",
+        "label": "任务概览插件",
+        "renderer": "ui/index.html",
+        "order": 100
+      },
+      {
+        "point": "navigation",
+        "id": "board-nav",
+        "label": "任务概览插件",
+        "target": "board",
+        "order": 100
+      },
+      {
+        "point": "command",
+        "id": "board-command",
+        "label": "打开任务概览插件",
+        "command": "/task-board",
+        "target": "board"
+      }
+    ]
+  },
+  "files": {
+    "ui/index.html": "<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><style>:root{color-scheme:light dark}body{margin:0;padding:24px;font:14px/1.6 system-ui;background:Canvas;color:CanvasText}button{font:inherit;padding:6px 12px}ul{padding-left:20px}li{margin:10px 0}small{opacity:.6}</style></head><body><h2>任务概览插件</h2><p>此界面来自独立安装包，不在主项目页面中硬编码。</p><button id=\"refresh\">刷新任务</button><ul id=\"tasks\"></ul><p id=\"error\" role=\"alert\"></p><small>/* ARTEX Plugin SDK v1. No token, parent DOM or unrestricted API is exposed. */\n(()=>{let channel,context;const pending=new Map(),listeners=new Set();let ready;const whenReady=new Promise(r=>ready=r);window.addEventListener('message',event=>{const d=event.data;if(event.source!==parent||!d)return;if(d.type==='artex.init'){if(channel&&channel!==d.channel)return;channel=d.channel;context=d.context;ready();for(const f of listeners)f(context)}else if(d.type==='artex.result'&&d.channel===channel){const p=pending.get(d.id);if(!p)return;clearTimeout(p.timer);pending.delete(d.id);d.error?p.reject(new Error(d.error)):p.resolve(d.result)}});window.artex=Object.freeze({ready:whenReady,context:()=>context,onContext:f=>{listeners.add(f);return()=>listeners.delete(f)},invoke:async(method,params={})=>{await whenReady;return new Promise((resolve,reject)=>{const id=crypto.randomUUID(),timer=setTimeout(()=>{pending.delete(id);reject(new Error('Host request timed out'))},15000);pending.set(id,{resolve,reject,timer});parent.postMessage({type:'artex.invoke',channel,id,method,params},'*')})}})})();\n v1 · host.tasks.list</small><script>SDK</script><script>async function load(){try{const tasks=await artex.invoke('host.tasks.list');document.getElementById('tasks').replaceChildren(...tasks.map(t=>{const li=document.createElement('li');li.textContent='#'+t.id+' '+(t.name||'未命名任务')+' · '+t.status;return li}));document.getElementById('error').textContent=''}catch(e){document.getElementById('error').textContent=e.message}}document.getElementById('refresh').onclick=load;artex.ready.then(load);</script></body></html>"
+  }
+}

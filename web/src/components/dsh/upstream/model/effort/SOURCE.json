@@ -1,0 +1,30 @@
+[
+  {
+    "repository": "https://github.com/2768651338/dsh-effort-slider",
+    "path": "src/client/effort/EffortPanel.tsx",
+    "source_sha256": "678809b9add6e064b5dd970e97854b5595d2dd207a00034885fb9a4f9be5fcca",
+    "adapted_sha256": "3a662f12ef0d521777727a59a568a3e003095015baf6781c72740da77a872b91",
+    "adaptations": "ARTEX scope/model directory; declared effort tiers; SVG assistant instead of WebGL fire; keyboard and error rollback"
+  },
+  {
+    "repository": "https://github.com/2768651338/dsh-effort-slider",
+    "path": "src/client/effort/directory.ts",
+    "source_sha256": "298199015f6b9548a62d22fe844b23dccd42a4c7870ae8702768cbd16b7393c0",
+    "adapted_sha256": "298199015f6b9548a62d22fe844b23dccd42a4c7870ae8702768cbd16b7393c0",
+    "adaptations": "ARTEX scope/model directory; declared effort tiers; SVG assistant instead of WebGL fire; keyboard and error rollback"
+  },
+  {
+    "repository": "https://github.com/2768651338/dsh-effort-slider",
+    "path": "src/client/effort/metrics.ts",
+    "source_sha256": "e68ff1149b68bcbd9e5991e27d4803b0f0e858e5dd602535c845e3f384dd3e66",
+    "adapted_sha256": "e68ff1149b68bcbd9e5991e27d4803b0f0e858e5dd602535c845e3f384dd3e66",
+    "adaptations": "ARTEX scope/model directory; declared effort tiers; SVG assistant instead of WebGL fire; keyboard and error rollback"
+  },
+  {
+    "repository": "https://github.com/2768651338/dsh-effort-slider",
+    "path": "src/client/effort/effort.module.css",
+    "source_sha256": "fc1c4ce17778a0fc35bc57823e0643a66ed27953b3cf2aa8af675f2862ace947",
+    "adapted_sha256": "fe8e1e52a32303e02ced294a2fdc697e17c31ad3d15e705d4de1de6089a45fec",
+    "adaptations": "ARTEX scope/model directory; declared effort tiers; SVG assistant instead of WebGL fire; keyboard and error rollback"
+  }
+]

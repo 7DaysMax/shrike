@@ -1,0 +1,409 @@
+/* ---------------------------------------------------------------------------
+ * SHRIKE shell — structural port of DeepSeek Harness' three-column frame.
+ *
+ * Metrics are taken from dsh `packages/client/ui-layout/src/client/
+ * AppFrame.module.css` and `ui-sidebar/src/client/SidebarRoot.module.css`,
+ * not eyeballed:
+ *   sidebar 280 (min 264 / max 420, rail 56)  ·  padding 6px 12px
+ *   panel row  36 min-height, 7px 8px padding, radius 12, gap 8
+ *   new-action 38 height, radius 12, 0.5px border
+ *   brand row  60 height, name 18px/600, letter-spacing .04em
+ *   rail       18px 10px 6px padding, 36x36 control boxes
+ * Colours stay on the vendored --dsw-* tokens.
+ * ------------------------------------------------------------------------- */
+
+.dsh-frame {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  height: 100svh;
+  overflow: hidden;
+  background: var(--dsw-alias-bg-base);
+  color: var(--dsw-alias-label-primary);
+  font-size: 14px;
+}
+
+.dsh-frame[data-collapsed="true"] {
+  grid-template-columns: 56px minmax(0, 1fr);
+}
+
+/* ---------------------------------------------------------------- sidebar */
+
+.dsh-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--dsw-specific-sidebar-fill);
+  border-right: 0.5px solid var(--dsw-alias-border-l3);
+}
+
+.dsh-sidebar[data-collapsed="true"] {
+  padding: 18px 10px 6px;
+}
+
+/* Top strip: the collapse control sits at the right edge, 52px tall as in dsh. */
+.dsh-strip {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 52px;
+  margin: -6px -12px 0;
+  padding: 0 12px 2px;
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-strip {
+  height: 20px;
+  margin: 0 0 8px;
+  padding: 0;
+  justify-content: center;
+}
+
+.dsh-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--dsw-radius-sm);
+  background: transparent;
+  color: var(--dsw-alias-label-secondary);
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.dsh-icon-btn:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-primary);
+}
+
+/* Brand row: mark + wordmark on one 24px baseline. */
+.dsh-brand {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 60px;
+  padding: 8px 0 8px 4px;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: var(--dsw-alias-label-primary);
+  text-decoration: none;
+}
+
+.dsh-brand-mark {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--dsw-alias-label-primary);
+}
+
+.dsh-brand-name {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.dsh-brand-sub {
+  margin-left: 2px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-brand {
+  height: 36px;
+  padding: 0;
+  margin-bottom: 12px;
+  justify-content: center;
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-brand-name,
+.dsh-sidebar[data-collapsed="true"] .dsh-brand-sub {
+  display: none;
+}
+
+/* Primary action: dsh's New Session bar. */
+.dsh-new {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  margin: 0 2px 12px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  border: 0.5px solid var(--dsw-alias-border-l3);
+  border-radius: var(--dsw-radius-md);
+  background: var(--dsw-alias-button-elevated-fill);
+  color: var(--dsw-alias-label-primary);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.dsh-new:hover {
+  background: var(--dsw-alias-button-floating-hover);
+}
+
+.dsh-new > svg {
+  flex: none;
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-new {
+  width: 36px;
+  height: 36px;
+  margin: 0 0 12px;
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-new:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-new > span {
+  display: none;
+}
+
+/* Panel list: flat rows, 2px gap, no card chrome. */
+.dsh-nav {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.dsh-nav:hover {
+  scrollbar-color: var(--dsw-alias-scrollbar-bg-l2) transparent;
+}
+
+.dsh-group + .dsh-group {
+  margin-top: 14px;
+}
+
+.dsh-group-label {
+  padding: 6px 10px 4px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-group-label {
+  display: none;
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-group + .dsh-group {
+  margin-top: 12px;
+}
+
+.dsh-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  margin: 0 2px;
+  padding: 7px 8px;
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-md);
+  color: var(--dsw-alias-label-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 100ms ease;
+}
+
+.dsh-row:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.dsh-row[data-active="true"] {
+  background: var(--dsw-specific-sidebar-nav-item-active);
+  color: var(--dsw-alias-label-primary);
+  font-weight: 500;
+}
+
+.dsh-row-glyph {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.dsh-row[data-active="true"] .dsh-row-glyph {
+  color: var(--dsw-alias-label-primary);
+}
+
+.dsh-row-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-row {
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-row-title {
+  display: none;
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-nav {
+  overflow: visible;
+}
+
+/* Foot: settings + account, pinned. */
+.dsh-foot {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 8px;
+  margin-top: 8px;
+  border-top: 0.5px solid var(--dsw-alias-border-l3);
+}
+
+.dsh-sidebar[data-collapsed="true"] .dsh-foot {
+  align-items: center;
+  border-top: none;
+}
+
+.dsh-avatar {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--dsw-alias-interactive-bg-hover);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dsw-alias-label-secondary);
+}
+
+/* ----------------------------------------------------------------- centre */
+
+.dsh-center {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--dsw-alias-bg-base);
+}
+
+/* Slim title row — dsh's conversation header, not a breadcrumb bar. */
+.dsh-header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 44px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.dsh-header-leading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.dsh-title {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--dsw-alias-label-primary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dsh-title-sep {
+  color: var(--dsw-alias-label-quaternary);
+}
+
+.dsh-title-sub {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--dsw-alias-label-tertiary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dsh-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+
+.dsh-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 4px 20px 20px;
+  box-sizing: border-box;
+}
+
+.dsh-content[data-bleed="true"] {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------- surfaces */
+
+/* Page-level panels: dsh draws flat 16px-radius surfaces on layer-1 with a
+   0.5px border, never a drop shadow. */
+.dsh-panel {
+  border: 0.5px solid var(--dsw-alias-border-l3);
+  border-radius: var(--dsw-radius-lg);
+  background: var(--dsw-alias-bg-layer-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dsh-icon-btn,
+  .dsh-new,
+  .dsh-row {
+    transition: none;
+  }
+}

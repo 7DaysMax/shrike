@@ -1,0 +1,1 @@
+import fs from 'node:fs';import path from 'node:path';import{fileURLToPath}from'node:url';const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');const data=fs.readFileSync(path.join(root,'server/plugin_builtin.json'));fs.writeFileSync(path.join(root,'web/src/lib/plugins/builtin-catalog.json'),data);

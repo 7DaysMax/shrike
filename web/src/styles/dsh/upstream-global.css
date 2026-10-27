@@ -1,0 +1,4 @@
+/* Verbatim global rules hoisted for Next CSS Modules pure mode. */
+html[data-windows-titlebar]:has([data-sidebar-collapsed='true']) {
+  --dsh-windows-menu-start: 84px;
+}

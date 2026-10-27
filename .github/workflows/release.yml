@@ -1,0 +1,215 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch: # 手动触发：不用打 tag 也能让 GitHub 编一遍
+
+permissions:
+  contents: write # 创建 Release 需要
+
+env:
+  VERSION: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('dev-{0}', github.run_number) }}
+
+jobs:
+  # ① 前端静态导出（一次），产物给所有平台复用
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      - run: npm run build:static
+        working-directory: web
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-dist
+          path: web/out
+
+  # ② 服务端二进制：多平台交叉编译（内嵌前端）+ 打 zip
+  binaries:
+    needs: frontend
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - { goos: linux, goarch: amd64 }
+          - { goos: linux, goarch: arm64 }
+          - { goos: darwin, goarch: amd64 }
+          - { goos: darwin, goarch: arm64 }
+          - { goos: windows, goarch: amd64 }
+          - { goos: windows, goarch: arm64 }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+          cache: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: web-dist
+          path: server/webui/dist
+      - name: Build and package with build.sh
+        env:
+          SHRIKE_TARGET_OS: ${{ matrix.goos }}
+          SHRIKE_TARGET_ARCH: ${{ matrix.goarch }}
+          SHRIKE_BUILD_VERSION: ${{ env.VERSION }}
+          SHRIKE_SKIP_FRONTEND: "1"
+          SHRIKE_SKIP_NPM_CI: "1"
+          # UPX 自解压 ELF 在部分 Linux 内核、虚拟化和安全策略下会崩溃。
+          # Release 使用 Go linker 裁剪和 zip 压缩，优先保证可移植性。
+          SHRIKE_COMPRESS: "0"
+          SHRIKE_PACKAGE: "1"
+          SHRIKE_PACKAGE_DIR: dist
+        run: |
+          ./build.sh --target "${SHRIKE_TARGET_OS}/${SHRIKE_TARGET_ARCH}"
+      - name: Smoke test Linux amd64 binary
+        if: matrix.goos == 'linux' && matrix.goarch == 'amd64'
+        run: dist/shrike-linux-amd64/shrike -h
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pkg-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: "dist/*.zip"
+      # Linux 二进制单独上传，供 docker job 复用（免在镜像里重编前端+Go）
+      - if: matrix.goos == 'linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: bin-linux-${{ matrix.goarch }}
+          path: dist/shrike-linux-${{ matrix.goarch }}/shrike
+
+  # ③ 桌面端 · Windows（纯 Go，CGO_ENABLED=0，不需要 WebView2 工具链）
+  #    exe 的图标/版本信息来自已提交的 cmd/shrike-desktop/rsrc_windows_*.syso
+  desktop-windows:
+    needs: frontend
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        arch: [amd64, arm64]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+          cache: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: web-dist
+          path: server/webui/dist
+      - name: Build shrike-desktop.exe
+        shell: bash
+        env:
+          GOOS: windows
+          GOARCH: ${{ matrix.arch }}
+          CGO_ENABLED: "0"
+        run: |
+          go build -tags embedui -trimpath \
+            -ldflags "-s -w -H windowsgui -X main.version=${{ env.VERSION }}" \
+            -o dist/desktop/shrike-desktop.exe ./cmd/shrike-desktop
+          mkdir -p dist/desktop/skills
+          cp -R skills/. dist/desktop/skills/
+      - name: Package
+        shell: pwsh
+        run: |
+          Compress-Archive -Path dist/desktop/* -DestinationPath "SHRIKE-${{ env.VERSION }}-windows-${{ matrix.arch }}.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pkg-desktop-windows-${{ matrix.arch }}
+          path: "SHRIKE-*-windows-*.zip"
+
+  # ④ 桌面端 · macOS（.app + ad-hoc 签名 + dmg）
+  desktop-macos:
+    needs: frontend
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+          cache: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: web-dist
+          path: server/webui/dist
+      - name: Build .app + dmg
+        env:
+          SHRIKE_SKIP_FRONTEND: "1"
+          SHRIKE_BUILD_VERSION: ${{ env.VERSION }}
+        run: ./build-desktop.sh
+      - name: Package .app as zip（dmg 之外再给一份免挂载的）
+        env:
+          SHRIKE_BUILD_VERSION: ${{ env.VERSION }}
+        run: |
+          cd dist/desktop
+          ditto -c -k --sequesterRsrc --keepParent SHRIKE.app "SHRIKE-${SHRIKE_BUILD_VERSION}-macos-universal-app.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pkg-desktop-macos
+          path: |
+            dist/desktop/*.dmg
+            dist/desktop/*-macos-universal-app.zip
+
+  # ⑤ 汇总所有包 → 创建 GitHub Release
+  release:
+    needs: [binaries, desktop-windows, desktop-macos]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pkg-*
+          merge-multiple: true
+          path: dist
+      - name: Generate checksums
+        working-directory: dist
+        run: sha256sum *.zip *.dmg > SHA256SUMS 2>/dev/null || sha256sum *.zip > SHA256SUMS
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.VERSION }}
+          files: |
+            dist/*.zip
+            dist/*.dmg
+            dist/SHA256SUMS
+          generate_release_notes: true
+          fail_on_unmatched_files: false
+
+  # ⑥ 多架构镜像 → 推 Docker Hub（需要仓库变量 DOCKER_PUSH=true 且配好 secrets，否则跳过）
+  docker:
+    needs: binaries
+    if: vars.DOCKER_PUSH == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # 取 Dockerfile 与 skills/
+      - uses: actions/download-artifact@v4
+        with:
+          name: bin-linux-amd64
+          path: dist/amd64
+      - uses: actions/download-artifact@v4
+        with:
+          name: bin-linux-arm64
+          path: dist/arm64
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: autumn27/shrike
+          tags: |
+            type=ref,event=tag
+            type=raw,value=latest
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

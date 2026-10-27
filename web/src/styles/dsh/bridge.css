@@ -1,0 +1,98 @@
+/* ---------------------------------------------------------------------------
+ * DSH bridge — maps DeepSeek Harness tokens (`--dsw-*`) onto the shadcn /
+ * Tailwind variable names SHRIKE's components already consume.
+ *
+ * Why a bridge instead of rewriting components: every shadcn primitive reads
+ * `--background` / `--card` / `--border` / `--primary` / `--sidebar*` /
+ * `--radius`, so remapping those once re-skins all 61 primitives and the 29
+ * business components in a single edit — no component churn, no visual drift.
+ *
+ * Declared on `body`, not `:root`: the `--dsw-alias-*` tokens live on `body`
+ * (and on `html.dark body` for the dark sheet), and custom properties only
+ * inherit downward. A `:root` rule would resolve them to the guaranteed-invalid
+ * value and every mapping would come out empty.
+ *
+ * The three legacy theme presets are excluded on purpose: if a user picks
+ * brutalist / soft-pop / tangerine the preset keeps winning, so the picker in
+ * Settings still does what it says. Everything else — including the default
+ * "roomote" — renders in the Harness design language.
+ * ------------------------------------------------------------------------- */
+
+html:not([data-theme-preset="brutalist"]):not([data-theme-preset="soft-pop"]):not(
+    [data-theme-preset="tangerine"]
+  )
+  body {
+  /* geometry: DSH radius-md = 12px drives every rounded control */
+  --radius: 0.75rem;
+
+  /* surfaces */
+  --background: var(--dsw-alias-bg-base);
+  --foreground: var(--dsw-alias-label-primary);
+
+  --card: var(--dsw-alias-bg-layer-2);
+  --card-foreground: var(--dsw-alias-label-primary);
+  --popover: var(--dsw-alias-bg-layer-2);
+  --popover-foreground: var(--dsw-alias-label-primary);
+
+  /* action colours: DSH's primary button is near-black on light, near-white on dark */
+  --primary: var(--dsw-alias-brand-primary);
+  --primary-foreground: var(--dsw-alias-label-primary-foreground);
+
+  --secondary: var(--dsw-alias-interactive-bg-hover-solid);
+  --secondary-foreground: var(--dsw-alias-label-primary);
+
+  --muted: var(--dsw-alias-interactive-bg-hover-solid);
+  --muted-foreground: var(--dsw-alias-label-tertiary);
+
+  --accent: var(--dsw-alias-interactive-bg-hover-solid);
+  --accent-foreground: var(--dsw-alias-label-primary);
+
+  --destructive: var(--dsw-alias-state-error-primary);
+
+  /* hairlines: DSH border-l2 is 0.1 alpha black / 0.12 alpha white */
+  --border: var(--dsw-alias-border-l2);
+  --input: var(--dsw-alias-border-l4);
+  --ring: var(--dsw-alias-state-business-primary);
+
+  /* sidebar: the specific-* sheet, not the generic surface tokens */
+  --sidebar: var(--dsw-specific-sidebar-fill);
+  --sidebar-foreground: var(--dsw-alias-label-primary);
+  --sidebar-primary: var(--dsw-alias-brand-primary);
+  --sidebar-primary-foreground: var(--dsw-alias-label-primary-foreground);
+  --sidebar-accent: var(--dsw-specific-sidebar-nav-item-hover);
+  --sidebar-accent-foreground: var(--dsw-alias-label-primary);
+  --sidebar-border: var(--dsw-alias-border-l2);
+  --sidebar-ring: var(--dsw-alias-state-business-primary);
+
+  /* charts pick the static ramps so they stay legible in both themes */
+  --chart-1: var(--dsw-static-deepseek-500);
+  --chart-2: var(--dsw-static-blue-500);
+  --chart-3: var(--dsw-static-green-500);
+  --chart-4: var(--dsw-static-amber-500);
+  --chart-5: var(--dsw-static-red-500);
+
+  /* DSH elevation lv1/lv2, reused by cards, popovers and the header */
+  --dsh-shadow-lv1: var(--dsw-shadow-lv1);
+  --dsh-shadow-lv2: var(--dsw-shadow-lv2);
+  --dsh-shadow-lv3: var(--dsw-shadow-lv3);
+}
+
+/* Sidebar nav items: DSH uses radius-sm (8px) on rows and tints the active row
+ * with the specific sidebar tokens rather than a full primary fill. */
+html:not([data-theme-preset="brutalist"]):not([data-theme-preset="soft-pop"]):not(
+    [data-theme-preset="tangerine"]
+  )
+  body
+  [data-sidebar="menu-button"][data-active="true"] {
+  background-color: var(--dsw-specific-sidebar-nav-item-active);
+  color: var(--dsw-alias-label-primary);
+}
+
+html:not([data-theme-preset="brutalist"]):not([data-theme-preset="soft-pop"]):not(
+    [data-theme-preset="tangerine"]
+  )
+  body
+  [data-sidebar="menu-button"][data-active="true"]
+  svg {
+  color: var(--dsw-alias-state-business-primary);
+}

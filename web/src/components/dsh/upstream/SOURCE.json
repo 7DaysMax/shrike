@@ -1,0 +1,494 @@
+[
+  {
+    "source": "packages/client/ui-primitives/src/CodeCard.module.css",
+    "target": "src/components/dsh/upstream/primitives/CodeCard.module.css",
+    "sha256": "3178630168a17cc15a0628b0d94a1f6a7e1c3ebf41d1c89a52e23dcaac5247aa",
+    "adapted_sha256": "3178630168a17cc15a0628b0d94a1f6a7e1c3ebf41d1c89a52e23dcaac5247aa"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/CodeFileIcon.tsx",
+    "target": "src/components/dsh/upstream/primitives/CodeFileIcon.tsx",
+    "sha256": "882db02f0af7a6624006166c781cb03119e96febe445278941732a1320ecbbdf",
+    "adapted_sha256": "11b0aba8be1fd1a7f2c33719277444f372f36bf01c6341435585e62fba33af78"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/CodeToolbar.tsx",
+    "target": "src/components/dsh/upstream/primitives/CodeToolbar.tsx",
+    "sha256": "6bd7e7c39628894a4b92e1e8e58fbc96c8df411a5ffb14edf152d2a8f5df4b21",
+    "adapted_sha256": "611aba453141cdc8dfc772ad2ddc85d8fec44fec8dcf51d459e1d3a4d611f71c"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/DisclosureRow.module.css",
+    "target": "src/components/dsh/upstream/primitives/DisclosureRow.module.css",
+    "sha256": "ab01c441fccaba51ebfa1769f73cee4a87fa28e09d09fcdee311052d9540dc32",
+    "adapted_sha256": "ab01c441fccaba51ebfa1769f73cee4a87fa28e09d09fcdee311052d9540dc32"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/DisclosureRow.tsx",
+    "target": "src/components/dsh/upstream/primitives/DisclosureRow.tsx",
+    "sha256": "000d8193ebed80b6ac1d9ff8f8b7ce76e596532065b08003d0033c0ab040501d",
+    "adapted_sha256": "1f624f573113ed2e365eaa46b8a9af6c9d23ec5d24a1852c35009e6ce4a5cafa"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/DraggableImage.tsx",
+    "target": "src/components/dsh/upstream/primitives/DraggableImage.tsx",
+    "sha256": "254bb2e94b37dc88383ac7291a4306a499fd82ab3f5f0570010d6ec94f01848c",
+    "adapted_sha256": "568c8bc0c0f3d81c335f4ef66b7972bace570ebbf8a3ca460af83dd56e15c3fd"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/FileTypeIcon.module.css",
+    "target": "src/components/dsh/upstream/primitives/FileTypeIcon.module.css",
+    "sha256": "bc5756f2834772d4c7cc661d15417aafe0af8d00c959cdfe2dcde19bebcf62fe",
+    "adapted_sha256": "bc5756f2834772d4c7cc661d15417aafe0af8d00c959cdfe2dcde19bebcf62fe"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/FileTypeIcon.tsx",
+    "target": "src/components/dsh/upstream/primitives/FileTypeIcon.tsx",
+    "sha256": "4cf95fa56eb3bfa20d899672573a999acca6d63f03decd56bf46469422308252",
+    "adapted_sha256": "a16003070a786376ef415fc95c89753c21191dbd89ebbe85ee6d642fdfdadf40"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/HoverCard.module.css",
+    "target": "src/components/dsh/upstream/primitives/HoverCard.module.css",
+    "sha256": "e5dc1c4235065942925aecd48b36c29c8f4df79ec571345b95fdd7f2fef82c02",
+    "adapted_sha256": "e5dc1c4235065942925aecd48b36c29c8f4df79ec571345b95fdd7f2fef82c02"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/HoverCard.tsx",
+    "target": "src/components/dsh/upstream/primitives/HoverCard.tsx",
+    "sha256": "2374c83b864c9f15c9891b8b838c463cdb45f57c06e679952a48c7cf90df52f5",
+    "adapted_sha256": "2d0290d923316d15e35dea4608e6b325188120d64ce4281e4e14f15a3982aad6"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/HoverCardGroup.tsx",
+    "target": "src/components/dsh/upstream/primitives/HoverCardGroup.tsx",
+    "sha256": "1cd6af11660afddb51c216bdbf6eeb001d4619ec0f98058bcf0f8904e26684aa",
+    "adapted_sha256": "1cd6af11660afddb51c216bdbf6eeb001d4619ec0f98058bcf0f8904e26684aa"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/ImageLightbox.module.css",
+    "target": "src/components/dsh/upstream/primitives/ImageLightbox.module.css",
+    "sha256": "cc2b6346c0a6443fbe94c274c129ccbf8cd8ca4dd0dac672cf64402fd22e25eb",
+    "adapted_sha256": "cc2b6346c0a6443fbe94c274c129ccbf8cd8ca4dd0dac672cf64402fd22e25eb"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/ImageLightbox.tsx",
+    "target": "src/components/dsh/upstream/primitives/ImageLightbox.tsx",
+    "sha256": "b3c526c30d525be4c4fe1754b9936692b8aa4e29a0b265099a4ffb9bbdcb0a7f",
+    "adapted_sha256": "a77f6c667a7d061845f350d0be00ec9f8d79f05e68bf15af5f8995401f58d795"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/ImagePreview.module.css",
+    "target": "src/components/dsh/upstream/primitives/ImagePreview.module.css",
+    "sha256": "0830f46ff6efe022b33fc0145417ee9e30a893b056cb434baa1eb14f3cc2ebc7",
+    "adapted_sha256": "0830f46ff6efe022b33fc0145417ee9e30a893b056cb434baa1eb14f3cc2ebc7"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/ImagePreview.tsx",
+    "target": "src/components/dsh/upstream/primitives/ImagePreview.tsx",
+    "sha256": "ac0503f4e7e5a56d3d88d8006b70db381b5bbcd76b2719a51a5cabe495f2b70e",
+    "adapted_sha256": "0ac301fc5f705a4c3b351b686bf60a88ab57a13d9d3f3e51b473f8d7a4c2098d"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/LinkIcon.tsx",
+    "target": "src/components/dsh/upstream/primitives/LinkIcon.tsx",
+    "sha256": "243b360d7a74b6470bbce6034a3518214bb840a305b0e731bd0600409ddbc3eb",
+    "adapted_sha256": "30121c2577cf482372d33c0ab4bb52780297d35ab535ac2387cd4508f68ae662"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/ShortcutKeys.module.css",
+    "target": "src/components/dsh/upstream/primitives/ShortcutKeys.module.css",
+    "sha256": "ffa9624099dafb8dfe3e76c57fe26a523cb7943fa5bedd31d3c67e16e3351139",
+    "adapted_sha256": "ffa9624099dafb8dfe3e76c57fe26a523cb7943fa5bedd31d3c67e16e3351139"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/ShortcutKeys.tsx",
+    "target": "src/components/dsh/upstream/primitives/ShortcutKeys.tsx",
+    "sha256": "9a79d439af8196f373bb064470ab2c8d38ca5746257a806fd798389929a8f751",
+    "adapted_sha256": "9a79d439af8196f373bb064470ab2c8d38ca5746257a806fd798389929a8f751"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/SiteGlyph.tsx",
+    "target": "src/components/dsh/upstream/primitives/SiteGlyph.tsx",
+    "sha256": "cd5a4fc8644be21fbeca2e9c1359592a412c3920d926a4fa1f0740c68a317158",
+    "adapted_sha256": "cd5a4fc8644be21fbeca2e9c1359592a412c3920d926a4fa1f0740c68a317158"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/TextShimmer.module.css",
+    "target": "src/components/dsh/upstream/primitives/TextShimmer.module.css",
+    "sha256": "2353d6d72be5150aee3b528e7ae081a941f508f4ee3aa17243d6b0cc3b4240c7",
+    "adapted_sha256": "2353d6d72be5150aee3b528e7ae081a941f508f4ee3aa17243d6b0cc3b4240c7"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/TextShimmer.tsx",
+    "target": "src/components/dsh/upstream/primitives/TextShimmer.tsx",
+    "sha256": "ffd8cc02a2f76b73c5f1f7a4338fb5df8985a1abe3473eea974a900236b48b50",
+    "adapted_sha256": "f9c3ec5ad1b7d4582e3b6da2aecc02575ba59037e91e45816f8ec165ec2a308b"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/Tooltip.module.css",
+    "target": "src/components/dsh/upstream/primitives/Tooltip.module.css",
+    "sha256": "531b7d7e4e17a73978c43b492308519944894e635d247ed404f2b910a93774c9",
+    "adapted_sha256": "531b7d7e4e17a73978c43b492308519944894e635d247ed404f2b910a93774c9"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "target": "src/components/dsh/upstream/primitives/Tooltip.tsx",
+    "sha256": "c2f931a12e7bf7ae2d5d0adbd6296ace2e4605e5415978a4e503fe8e63e41c7c",
+    "adapted_sha256": "1c7e8c9d6f47019b13e970bb08620104c3c546c5009c15dd0f84bd2d24940635"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/UserMessageBubble.module.css",
+    "target": "src/components/dsh/upstream/primitives/UserMessageBubble.module.css",
+    "sha256": "c86a4623c0d64ade58cbe063129732c93f730d1cf2b892357c1e3dc6ef44871e",
+    "adapted_sha256": "c86a4623c0d64ade58cbe063129732c93f730d1cf2b892357c1e3dc6ef44871e"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/UserMessageBubble.tsx",
+    "target": "src/components/dsh/upstream/primitives/UserMessageBubble.tsx",
+    "sha256": "55ef371e38a0f8f9d1b254898dc3a1dec89167e2cf5475ab7254aa8b7a694692",
+    "adapted_sha256": "55ef371e38a0f8f9d1b254898dc3a1dec89167e2cf5475ab7254aa8b7a694692"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/clipboard.ts",
+    "target": "src/components/dsh/upstream/primitives/clipboard.ts",
+    "sha256": "f3c5ff3d5ac550adda2366e245d33cf4d91d219bfb8692ef1943866d83748a0f",
+    "adapted_sha256": "f3c5ff3d5ac550adda2366e245d33cf4d91d219bfb8692ef1943866d83748a0f"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/code-file-icon-artwork.ts",
+    "target": "src/components/dsh/upstream/primitives/code-file-icon-artwork.ts",
+    "sha256": "1d4c6e8d77f46213258f6bf91acbaa4606cbbe09dff9b3fdc7404a90d5208515",
+    "adapted_sha256": "737c71c5aea3e83600dec3adc15731e6681ca8538f1ddf3f022d9acbabc4571c"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/code-file-types.ts",
+    "target": "src/components/dsh/upstream/primitives/code-file-types.ts",
+    "sha256": "d0a34f3ba4affb69335e319ff928824d3427808caaadcec1e9fc1d4b548d42a2",
+    "adapted_sha256": "54a7d30a05463cabb8d5d19071999f38ca1b4b29647b06a8f9f60fb3aead43f8"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/file-drag-actions.ts",
+    "target": "src/components/dsh/upstream/primitives/file-drag-actions.ts",
+    "sha256": "3be444886c2ec13b4f59f1884af814955a2d499e937c0fb51a69e14276fe0313",
+    "adapted_sha256": "884ae4ec6c900d3ec00d155e23f3d8678a0788c49ecd54472f58b41edaf9a70c"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/icons/artwork.ts",
+    "target": "src/components/dsh/upstream/primitives/icons/artwork.ts",
+    "sha256": "a6ec039a489c8a4bb0a3c647929935dd039b34a8545de0b9b40d3d58099901fb",
+    "adapted_sha256": "a6ec039a489c8a4bb0a3c647929935dd039b34a8545de0b9b40d3d58099901fb"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/icons/index.tsx",
+    "target": "src/components/dsh/upstream/primitives/icons/index.tsx",
+    "sha256": "36c26776faaaf2126403982e8cd2b83149c22c9a1c1184c397beeb62b978d3d3",
+    "adapted_sha256": "ffe84cc22bc86eaa9ac3f57fbf0cfc637789d2c59affba031412cab67e1ff1f1"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/icons/props.ts",
+    "target": "src/components/dsh/upstream/primitives/icons/props.ts",
+    "sha256": "edaf6e6c5fd556d99e3e6fa2d6f633884e7b72f16e4a8963765b1ed1882a15f3",
+    "adapted_sha256": "edaf6e6c5fd556d99e3e6fa2d6f633884e7b72f16e4a8963765b1ed1882a15f3"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/icons/shared-artwork.tsx",
+    "target": "src/components/dsh/upstream/primitives/icons/shared-artwork.tsx",
+    "sha256": "6bca0d4cbc45e3c99fb5566c8d03a206665115134585493f1f1713eac226ac09",
+    "adapted_sha256": "fc6fd735ba315e6a889cb11eae93d147258dd3489c2b3785efc4e65c498c77b3"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/image-drag.ts",
+    "target": "src/components/dsh/upstream/primitives/image-drag.ts",
+    "sha256": "8a2b868cf67315cdddda2b9c7fcc849d7306992e74a06ceb355c2f494564478c",
+    "adapted_sha256": "ced7efaf9c316f3393807369f7cbd9f2396e40b782fb9c5308d1669624925e30"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/input-modality.ts",
+    "target": "src/components/dsh/upstream/primitives/input-modality.ts",
+    "sha256": "91268be3f5ddb7b9a1defb13628d96082477e8771cdaa5df37d6d8b16bbbf2ba",
+    "adapted_sha256": "91268be3f5ddb7b9a1defb13628d96082477e8771cdaa5df37d6d8b16bbbf2ba"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/CodeBlock.module.css",
+    "target": "src/components/dsh/upstream/primitives/markdown/CodeBlock.module.css",
+    "sha256": "2c02318e7f43d24c1acd0400221b63e9ba85b6bffc004ed9b212e994f2535677",
+    "adapted_sha256": "2c02318e7f43d24c1acd0400221b63e9ba85b6bffc004ed9b212e994f2535677"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/CodeBlock.tsx",
+    "target": "src/components/dsh/upstream/primitives/markdown/CodeBlock.tsx",
+    "sha256": "1135af884608fa657213012b566a9ee6b53b97b7c384c748ae73826fb0c89d22",
+    "adapted_sha256": "c4f3a66976758f0bed085342a67ea16ab65ed6206e0ac6996783377ee0d98ce3"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx",
+    "target": "src/components/dsh/upstream/primitives/markdown/MarkdownDelegate.tsx",
+    "sha256": "35ca0bfe75dae5b1b90c94e636761fa6403efc6b9f88fa493a5bf6ce34a52be7",
+    "adapted_sha256": "f0cafcf67e0ff564004d7b305709e4bce0c850f8c558cacef8e65c1dd3409627"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/MarkdownText.module.css",
+    "target": "src/components/dsh/upstream/primitives/markdown/MarkdownText.module.css",
+    "sha256": "4c0680b3966e71b4ee7df38bc9c93efda240c05d2ea4c0174252e25f41488f24",
+    "adapted_sha256": "4c0680b3966e71b4ee7df38bc9c93efda240c05d2ea4c0174252e25f41488f24"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/MarkdownText.tsx",
+    "target": "src/components/dsh/upstream/primitives/markdown/MarkdownText.tsx",
+    "sha256": "36e867138bb87c4bf4a8ac6dfe58eed75300b0571ec23c359635a498a3d4e774",
+    "adapted_sha256": "02522b4a8bfb1f3af54781d0237f4ef76880847fea4fa6c790eda1a72e2e5327"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/cjkFriendlyStrong.ts",
+    "target": "src/components/dsh/upstream/primitives/markdown/cjkFriendlyStrong.ts",
+    "sha256": "bc4adf3183f7d0feea17e3a176e7c4b1db5bdddc29e7fc87261f627ff8a39b53",
+    "adapted_sha256": "bc4adf3183f7d0feea17e3a176e7c4b1db5bdddc29e7fc87261f627ff8a39b53"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/file-link.ts",
+    "target": "src/components/dsh/upstream/primitives/markdown/file-link.ts",
+    "sha256": "5739f469133c873ecc97256f6de026b50425a4f0a9f75c662d3b6b26516d26c0",
+    "adapted_sha256": "5739f469133c873ecc97256f6de026b50425a4f0a9f75c662d3b6b26516d26c0"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/highlight.ts",
+    "target": "src/components/dsh/upstream/primitives/markdown/highlight.ts",
+    "sha256": "8f641cddd716d1d96908784514e8e557a882d8547a2f2a60f6bb8e19855709b0",
+    "adapted_sha256": "8f641cddd716d1d96908784514e8e557a882d8547a2f2a60f6bb8e19855709b0"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/incremental.ts",
+    "target": "src/components/dsh/upstream/primitives/markdown/incremental.ts",
+    "sha256": "eaa266bb77dfb646738d0fdd79be4f1c4bc5490f7bf3f4127f9ffb72ef741ff8",
+    "adapted_sha256": "eaa266bb77dfb646738d0fdd79be4f1c4bc5490f7bf3f4127f9ffb72ef741ff8"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/katex.tsx",
+    "target": "src/components/dsh/upstream/primitives/markdown/katex.tsx",
+    "sha256": "8227e04d29333d2568021ed012143237b457852bce25d82cf394d72b941e74a5",
+    "adapted_sha256": "8227e04d29333d2568021ed012143237b457852bce25d82cf394d72b941e74a5"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/local-image-syntax.ts",
+    "target": "src/components/dsh/upstream/primitives/markdown/local-image-syntax.ts",
+    "sha256": "b5d99bb0ecfad38be19d37f51aa67e1a906b5e59040970e958afa76f4c4772cc",
+    "adapted_sha256": "4fde0662a28c73c4cef9451f01a1187ae86ac49228a5a2ff51bc43010b958d61"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/mathCompatibility.ts",
+    "target": "src/components/dsh/upstream/primitives/markdown/mathCompatibility.ts",
+    "sha256": "8a4b2640886720556b675b2f80f5202c08d91165fd6fc7aa27eb2673ed9f1a7c",
+    "adapted_sha256": "8a4b2640886720556b675b2f80f5202c08d91165fd6fc7aa27eb2673ed9f1a7c"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/parse.ts",
+    "target": "src/components/dsh/upstream/primitives/markdown/parse.ts",
+    "sha256": "1fb42f6a4fa6cb3c4a1945e4ddd69198c9ea03a7cf532838d75a50d79d3caf2b",
+    "adapted_sha256": "974d2b60926c70abe2fa7e5422b81c3a98b618f0f3af0f2d14160aa8f8278c80"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/render.tsx",
+    "target": "src/components/dsh/upstream/primitives/markdown/render.tsx",
+    "sha256": "4826f6e3f66d58cc1c3f434bfbc404be53e5fbb5b1f877b74ad33e382e1ede03",
+    "adapted_sha256": "983ba1af025b89bdd20f40de391d7d134d65c91ef792f38b248b86ab3d5880ba"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/markdown/useViewportHighlighting.ts",
+    "target": "src/components/dsh/upstream/primitives/markdown/useViewportHighlighting.ts",
+    "sha256": "29fb78ac857415989b70bf0cf73a8eef3b25843df227441838be2e08ba1f8d36",
+    "adapted_sha256": "33043547b461a88fe471ac8e89c7d8fd5ee02cf85a275c491fa6ce71671176cf"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/overlay-top-margin.ts",
+    "target": "src/components/dsh/upstream/primitives/overlay-top-margin.ts",
+    "sha256": "94c769ceb7337056030da13a24a5031c2abee62f7ebde993924e5a1181e67599",
+    "adapted_sha256": "94c769ceb7337056030da13a24a5031c2abee62f7ebde993924e5a1181e67599"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/pointer-grace.ts",
+    "target": "src/components/dsh/upstream/primitives/pointer-grace.ts",
+    "sha256": "cba1529e052cf3ea09fd3851990219e2b80d61fa4b3d35da490f28ba9f9965c6",
+    "adapted_sha256": "cba1529e052cf3ea09fd3851990219e2b80d61fa4b3d35da490f28ba9f9965c6"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/tooltip-placement.ts",
+    "target": "src/components/dsh/upstream/primitives/tooltip-placement.ts",
+    "sha256": "1bf4e3c58875d3fe653bef762ce5e4dea80825805da7f24cbddd7c691c77b8e5",
+    "adapted_sha256": "1bf4e3c58875d3fe653bef762ce5e4dea80825805da7f24cbddd7c691c77b8e5"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/useDismissOnOutsidePointer.ts",
+    "target": "src/components/dsh/upstream/primitives/useDismissOnOutsidePointer.ts",
+    "sha256": "c7e05b448eeade540b7c6623a5c60401a63d09589bb27a573760ae5defbb4644",
+    "adapted_sha256": "c7e05b448eeade540b7c6623a5c60401a63d09589bb27a573760ae5defbb4644"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/ReasoningRow.tsx",
+    "target": "src/components/dsh/upstream/ReasoningRow.tsx",
+    "sha256": "18b4050159d0c999d3f9f2d146edcf3d2561441661a83310433d84dd076914ff",
+    "adapted_sha256": "c9a6a6ef5fb46c3939f01e31a7ac55f2b3de28b392d80b6a0213dddc36bbb2d7"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/ReasoningRow.module.css",
+    "target": "src/components/dsh/upstream/ReasoningRow.module.css",
+    "sha256": "5c28a61623c3bda67513c728422141921909d5227dbfb6c2e8a1a2e7e59079b1",
+    "adapted_sha256": "5c28a61623c3bda67513c728422141921909d5227dbfb6c2e8a1a2e7e59079b1"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/MessageIconActions.module.css",
+    "target": "src/components/dsh/upstream/MessageIconActions.module.css",
+    "sha256": "a54995e5b62a776f619e034296fd59966a3940fc3768175e497cff256b045882",
+    "adapted_sha256": "a54995e5b62a776f619e034296fd59966a3940fc3768175e497cff256b045882"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/MessageItem.module.css",
+    "target": "src/components/dsh/upstream/MessageItem.module.css",
+    "sha256": "ca84271735a3e41229d4edc49bd9e3ddc06ea99698f12a2a3c98dd30a8d14743",
+    "adapted_sha256": "ca84271735a3e41229d4edc49bd9e3ddc06ea99698f12a2a3c98dd30a8d14743"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/AssistantMarkdown.module.css",
+    "target": "src/components/dsh/upstream/AssistantMarkdown.module.css",
+    "sha256": "e10c5986e93070cf87bbd5c4a570a64a103c0d596d178ad4b8e170bbb6883908",
+    "adapted_sha256": "e10c5986e93070cf87bbd5c4a570a64a103c0d596d178ad4b8e170bbb6883908"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/ChatView.module.css",
+    "target": "src/components/dsh/upstream/ChatView.module.css",
+    "sha256": "e2abb3ea11df4495c9e78787aa4c13e00842cfaf59422c629f5b6157e8e6d110",
+    "adapted_sha256": "e2abb3ea11df4495c9e78787aa4c13e00842cfaf59422c629f5b6157e8e6d110"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/accessibility.module.css",
+    "target": "src/components/dsh/upstream/accessibility.module.css",
+    "sha256": "57cfa9a890cb754cbd2cf9ade7d7379873620b7ee86cb8f11f0177065065788d",
+    "adapted_sha256": "57cfa9a890cb754cbd2cf9ade7d7379873620b7ee86cb8f11f0177065065788d"
+  },
+  {
+    "source": "packages/client/ui-conversation/src/client/skeleton/ConversationRoot.module.css",
+    "target": "src/components/dsh/upstream/ConversationRoot.module.css",
+    "sha256": "191c62b76e738fbacb962a42c1b22cb9954d73f8b735d29f8edddfb23482cc86",
+    "adapted_sha256": "191c62b76e738fbacb962a42c1b22cb9954d73f8b735d29f8edddfb23482cc86"
+  },
+  {
+    "source": "packages/client/ui-sidebar/src/client/SidebarRoot.module.css",
+    "target": "src/components/dsh/upstream/SidebarRoot.module.css",
+    "sha256": "314b546d50d3621beb2bc7faf65a598a2877fa05c5b8352784625b5503f3f7c3",
+    "adapted_sha256": "13afdb5c6719c69d4b9cddb34bd5d884b9097bb375e078b8b2548a5f706332f4"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/MessageIconActions.tsx",
+    "target": "src/components/dsh/upstream/MessageIconActions.tsx",
+    "sha256": "c2aad02ac677070772e22ba9e8a26ea91aa69a73cd242879ba18287a8b3fe6b8",
+    "adapted_sha256": "d291dfce62c58f1a108e2e70c7a250f88ff547bf57c9fd737a7ffcebfcd4a5d4"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/message-chrome.ts",
+    "target": "src/components/dsh/upstream/message-chrome.ts",
+    "sha256": "861a573c299317e5359f735a1c33381f93537e286a1b4fbd6ad0a0c01c98629a",
+    "adapted_sha256": "1147709092d32e883b58e5bcfdd6c78b1ca6c27d85bce16bf8e85510617c6661"
+  },
+  {
+    "source": "packages/client/ui-chat/src/client/chat/use-calendar-day.ts",
+    "target": "src/components/dsh/upstream/use-calendar-day.ts",
+    "sha256": "7add01dcf998cb7b00b85c9f71679f33954c84210beeadb28d371e22410a63f7",
+    "adapted_sha256": "11a50fa383776891af7531936fae954c0da3143748a9fabf5c9deb346d167567"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/use-clipboard-copy.ts",
+    "target": "src/components/dsh/upstream/primitives/use-clipboard-copy.ts",
+    "sha256": "d4b0abaddcf5b31b9faea3eb1e87b3ed0ec5397650b089eb86780e2115e12c0b",
+    "adapted_sha256": "23c48f3cfe5cb0c80171d80ecf75e5deda0b76a9cd38c5d91b88e8b92a29ce6d"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/MenuSurface.tsx",
+    "target": "src/components/dsh/upstream/primitives/MenuSurface.tsx",
+    "sha256": "1e9b1f476305d4076b23b42fd08b63f9429b8e1f646c06ebc39d8ded5de7fdbf",
+    "adapted_sha256": "1e9b1f476305d4076b23b42fd08b63f9429b8e1f646c06ebc39d8ded5de7fdbf"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/MenuSurface.module.css",
+    "target": "src/components/dsh/upstream/primitives/MenuSurface.module.css",
+    "sha256": "6230cfabdb5294b5cf174bc79842a9596f6aee6cd76a8cd5e183c67279bca9ae",
+    "adapted_sha256": "6230cfabdb5294b5cf174bc79842a9596f6aee6cd76a8cd5e183c67279bca9ae"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "target": "src/components/dsh/upstream/primitives/MenuGroup.tsx",
+    "sha256": "5cf45dc6fcb4aa892fd1e4c9d5e5ca8f8bee312ab1f8668f3063fcda0922e79d",
+    "adapted_sha256": "5cf45dc6fcb4aa892fd1e4c9d5e5ca8f8bee312ab1f8668f3063fcda0922e79d"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/MenuGroup.module.css",
+    "target": "src/components/dsh/upstream/primitives/MenuGroup.module.css",
+    "sha256": "d0b927d0df0026de5211e8ba8bec81e9f1960eeb914dea57bb0dc440bd71fd59",
+    "adapted_sha256": "d0b927d0df0026de5211e8ba8bec81e9f1960eeb914dea57bb0dc440bd71fd59"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/Input.tsx",
+    "target": "src/components/dsh/upstream/primitives/Input.tsx",
+    "sha256": "f418f7ea495f16c5c656e87f61c27d262f86f39e8bf14c33b8eeccfb41492b67",
+    "adapted_sha256": "f418f7ea495f16c5c656e87f61c27d262f86f39e8bf14c33b8eeccfb41492b67"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/Input.module.css",
+    "target": "src/components/dsh/upstream/primitives/Input.module.css",
+    "sha256": "e24eb924cfefcc009e486b25cd8de6afaf4bfff5d9c0c3da17b5afb6441c8632",
+    "adapted_sha256": "e24eb924cfefcc009e486b25cd8de6afaf4bfff5d9c0c3da17b5afb6441c8632"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/StateDot.tsx",
+    "target": "src/components/dsh/upstream/primitives/StateDot.tsx",
+    "sha256": "1e6965a29523ee47df115c5a5f9c13b55a3954451c1bd211ba57f7d87ed6bdf9",
+    "adapted_sha256": "3e712aeba2c5e347fb3ed9c75c0a6bf700b24c8dd46e4a0d86d3416563020e97"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/StateDot.module.css",
+    "target": "src/components/dsh/upstream/primitives/StateDot.module.css",
+    "sha256": "ad4603fd7a499dcc3b672dc87663f6c73302a8cedaf4a9859db0abdb9144bee8",
+    "adapted_sha256": "ad4603fd7a499dcc3b672dc87663f6c73302a8cedaf4a9859db0abdb9144bee8"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/Toast.tsx",
+    "target": "src/components/dsh/upstream/primitives/Toast.tsx",
+    "sha256": "85ed92693c910decadb38f095764bbdb3a1c6992b60bf63dedabdbebccd309b6",
+    "adapted_sha256": "b96bceb43ffb2e948fb394d5589e9d655d867a5ce3780e8c933496c92c55ad7d"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/Toast.module.css",
+    "target": "src/components/dsh/upstream/primitives/Toast.module.css",
+    "sha256": "d1f293eb66f7deaf8a0419023028e092cede2ce94544214924aa373f9876fa8e",
+    "adapted_sha256": "d1f293eb66f7deaf8a0419023028e092cede2ce94544214924aa373f9876fa8e"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/rank-by-name.ts",
+    "target": "src/components/dsh/upstream/primitives/rank-by-name.ts",
+    "sha256": "bdd17f45d9ec55fc701d9242c21599cea4cd3fd39df8a7f7e93ed44d7c02ea30",
+    "adapted_sha256": "bdd17f45d9ec55fc701d9242c21599cea4cd3fd39df8a7f7e93ed44d7c02ea30"
+  },
+  {
+    "source": "packages/client/ui-primitives/src/focus.ts",
+    "target": "src/components/dsh/upstream/primitives/focus.ts",
+    "sha256": "08d0098694d096c44d7d3027a5dd8af50384c8d1d637f16a7cac6b1bab38c344",
+    "adapted_sha256": "08d0098694d096c44d7d3027a5dd8af50384c8d1d637f16a7cac6b1bab38c344"
+  },
+  {
+    "source": "packages/client/ui-model-selection/src/client/ModelSelect.tsx",
+    "target": "src/components/dsh/upstream/model/ModelSelect.tsx",
+    "sha256": "2e93e014fbefc867d9312b743576c2aba11542c6847cc5896dfed54b8a5d0d8b",
+    "adapted_sha256": "6020b838eead8e3724405923f06727bd877effe3c59baeb2d0393c571a854200"
+  },
+  {
+    "source": "packages/client/ui-model-selection/src/client/ModelSelect.module.css",
+    "target": "src/components/dsh/upstream/model/ModelSelect.module.css",
+    "sha256": "58edeaf64fd4f5dd119f16c843ccb8ac91a2b7ea8f38c902e4d02f3833f5f659",
+    "adapted_sha256": "58edeaf64fd4f5dd119f16c843ccb8ac91a2b7ea8f38c902e4d02f3833f5f659"
+  },
+  {
+    "source": "packages/client/ui-model-selection/src/client/provider-order.ts",
+    "target": "src/components/dsh/upstream/model/provider-order.ts",
+    "sha256": "4eec9d5c9a7c5224102a6438260ce96d5c52b228bf070faf73258d645cb80638",
+    "adapted_sha256": "4eec9d5c9a7c5224102a6438260ce96d5c52b228bf070faf73258d645cb80638"
+  }
+]

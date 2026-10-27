@@ -1,0 +1,19 @@
+
+ ____    _   _   ____    ___   _  __  _____
+/ ___|  | | | | |  _ \  |_ _| | |/ / | ____|
+\___ \  | |_| | | |_) |  | |  | ' /  |  _|
+ ___) | |  _  | |  _ <   | |  | . \  | |___
+|____/  |_| |_| |_| \_\ |___| |_|\_\ |_____|
+  AI 自主渗透测试系统
+  版本 dev  ·  darwin/arm64  ·  go1.27.3  ·  监听 :8787
+
+2026/10/27 02:22:45 [config] 配置文件: /Users/eason/Desktop/未命名文件夹 3/ARTEX/config.json
+2026/10/27 02:22:45 [pg] 数据库配置来源: 配置文件 /Users/eason/Desktop/未命名文件夹 3/ARTEX/config.json (database 字段)
+2026/10/27 02:22:45 [traffic] recording proxy on 127.0.0.1:8788 (set HTTP_PROXY=http://127.0.0.1:8788 + trust _ca CA)
+time="2026-10-27T02:22:45+08:00" level=info msg="Proxy start listen at 127.0.0.1:8788\n"
+2026/10/27 02:22:45 [mcp] browser MCP 已移除捕获代理配置
+2026/10/27 02:22:45 [config] skill 目录: /Users/eason/Desktop/未命名文件夹 3/ARTEX/skills
+2026/10/27 02:22:45 [engine] built provider for LLM profile 1 (openai / deepseek-flash)
+2026/10/27 02:22:45 [engine] LLM configured from DB: openai / deepseek-flash
+2026/10/27 02:22:45 [manager] reloaded 1 task(s) from PG
+2026/10/27 02:22:45 SHRIKE dev backend listening on [::]:8787 (data=/Users/eason/Desktop/未命名文件夹 3/ARTEX/data, workers=3)

@@ -1,0 +1,377 @@
+{
+  "complete": false,
+  "definition": "adapted表示已接自有接口；partial和pending不计为DSH全功能迁移完成",
+  "counts": {
+    "adapted": 33,
+    "partial": 18,
+    "pending": 10
+  },
+  "features": [
+    {
+      "source_package": "ui-agent-preset",
+      "status": "adapted",
+      "scope": "接现有Agent选择器，保留自定义Agent",
+      "target": "web/src/app/(main)/chat/page.tsx"
+    },
+    {
+      "source_package": "ui-approval",
+      "status": "adapted",
+      "scope": "新待审批面板接现有真实审批接口，保留原记录和执行关联",
+      "target": "web/src/components/dsh/workbench-dock.tsx"
+    },
+    {
+      "source_package": "ui-attachment",
+      "status": "adapted",
+      "scope": "保留附件上传与元数据，接新输入框",
+      "target": "web/src/app/(main)/chat/page.tsx"
+    },
+    {
+      "source_package": "ui-brand-official",
+      "status": "adapted",
+      "scope": "保留项目原品牌，不替换为官方Harness品牌",
+      "target": "web/src/components/shrike-mark.tsx"
+    },
+    {
+      "source_package": "ui-chat",
+      "status": "partial",
+      "scope": "保留现有Activity回放与流式模型接口，迁入消息排版；DSH完整节点体系尚未迁入",
+      "target": "web/src/components/transcript.tsx"
+    },
+    {
+      "source_package": "ui-commands",
+      "status": "partial",
+      "scope": "文件/终端/浏览器/任务/设置命令；DSH Host命令全集尚未接入",
+      "target": "web/src/app/(main)/chat/page.tsx"
+    },
+    {
+      "source_package": "ui-conversation",
+      "status": "adapted",
+      "scope": "上游输入框/新建会话样式、附件拖拽/粘贴、本地草稿、排队发送、界面命令",
+      "target": "web/src/app/(main)/chat/page.tsx"
+    },
+    {
+      "source_package": "ui-deepseek-model-label-1017",
+      "status": "adapted",
+      "scope": "继续使用现有模型名称与供应商信息",
+      "target": "web/src/app/(main)/system/llm/page.tsx"
+    },
+    {
+      "source_package": "ui-deliverables",
+      "status": "pending",
+      "scope": "模型改动摘要、交付物与逐轮review协议尚未接入；当前只支持手动编辑比较",
+      "target": ""
+    },
+    {
+      "source_package": "ui-directory-picker-browse",
+      "status": "adapted",
+      "scope": "工作空间目录输入与树浏览代替DSH picker",
+      "target": "web/src/components/dsh/workbench-files.tsx"
+    },
+    {
+      "source_package": "ui-directory-picker-native",
+      "status": "pending",
+      "scope": "原生目录选择桥尚未接入",
+      "target": ""
+    },
+    {
+      "source_package": "ui-dockkit",
+      "status": "partial",
+      "scope": "本地React状态+多标签挂载替代，未迁入原DockKit资源协议",
+      "target": "web/src/components/dsh/workbench-context.tsx"
+    },
+    {
+      "source_package": "ui-entry-customization",
+      "status": "pending",
+      "scope": "入口自定义配置尚未迁入",
+      "target": ""
+    },
+    {
+      "source_package": "ui-file-drag",
+      "status": "adapted",
+      "scope": "输入框拖放及粘贴文件",
+      "target": "web/src/app/(main)/chat/page.tsx"
+    },
+    {
+      "source_package": "ui-goal",
+      "status": "partial",
+      "scope": "现有任务目标与暂停/继续操作保留；DSH会话目标/预算尚未接入",
+      "target": "web/src/components/dsh/workbench-dock.tsx"
+    },
+    {
+      "source_package": "ui-input-trigger",
+      "status": "partial",
+      "scope": "现有@业务引用与新增/界面命令；未采用完整DSH富文本编辑器",
+      "target": "web/src/app/(main)/chat/page.tsx"
+    },
+    {
+      "source_package": "ui-jobs",
+      "status": "partial",
+      "scope": "右侧现有任务状态入口，不等同于DSH后台作业协议",
+      "target": "web/src/components/dsh/workbench-dock.tsx"
+    },
+    {
+      "source_package": "ui-layout",
+      "status": "adapted",
+      "scope": "三栏布局、键盘/拖拽缩放、窄屏覆盖与全屏；未迁入 Electron 原生标题栏",
+      "target": "web/src/components/dsh/workbench-frame.tsx"
+    },
+    {
+      "source_package": "ui-message-feedback",
+      "status": "pending",
+      "scope": "消息反馈提交接口尚未接入",
+      "target": ""
+    },
+    {
+      "source_package": "ui-open-in-app",
+      "status": "pending",
+      "scope": "操作系统默认应用打开/Reveal适配尚未接入",
+      "target": ""
+    },
+    {
+      "source_package": "ui-permission-presets",
+      "status": "partial",
+      "scope": "保留自有拦截规则与审批设置；DSH权限预设未逐项映射",
+      "target": "web/src/app/(main)/system/intercept/page.tsx"
+    },
+    {
+      "source_package": "ui-plan",
+      "status": "pending",
+      "scope": "计划提交、审批和持久回放适配尚未接入",
+      "target": ""
+    },
+    {
+      "source_package": "ui-plugin-manager",
+      "status": "partial",
+      "scope": "自有插件宿主v1：真实包安装/启停/版本切换/依赖与权限诊断；DSH Cordis全协议仍待兼容",
+      "target": "web/src/app/(main)/system/extensions/page.tsx"
+    },
+    {
+      "source_package": "ui-plugin-market",
+      "status": "pending",
+      "scope": "DSH插件市场及Cordis插件安装/卸载协议尚未接入",
+      "target": ""
+    },
+    {
+      "source_package": "ui-primitives",
+      "status": "partial",
+      "scope": "保留shadcn基础控件并映射DSH语义tokens，未逐个替换为原DSH primitives",
+      "target": "web/src/styles/dsh/bridge.css"
+    },
+    {
+      "source_package": "ui-reference",
+      "status": "adapted",
+      "scope": "保留现有业务记录引用和MentionTextarea",
+      "target": "web/src/components/mention-textarea.tsx"
+    },
+    {
+      "source_package": "ui-renderer",
+      "status": "adapted",
+      "scope": "继续使用Next.js/React渲染，不启动DSH浏览器插件运行时",
+      "target": "web/src/app/(main)/layout.tsx"
+    },
+    {
+      "source_package": "ui-schedule",
+      "status": "partial",
+      "scope": "适配现有Agent间隔触发器的查询/新增/编辑/启停/删除；DSH日历/一次性调度尚未接入",
+      "target": "web/src/app/(main)/system/automations/page.tsx"
+    },
+    {
+      "source_package": "ui-secret-mask",
+      "status": "adapted",
+      "scope": "保留模型和账号页面现有密钥遮罩",
+      "target": "web/src/app/(main)/system/llm/page.tsx"
+    },
+    {
+      "source_package": "ui-session",
+      "status": "adapted",
+      "scope": "保留现有Conversation CRUD和历史分页，不引入DSH Session日志",
+      "target": "web/src/app/(main)/chat/page.tsx"
+    },
+    {
+      "source_package": "ui-settings",
+      "status": "adapted",
+      "scope": "继续使用ARTEX设置接口和原有表单，不引入DSH Host settings schema",
+      "target": "web/src/components/dsh/workbench-settings.tsx"
+    },
+    {
+      "source_package": "ui-settings-account",
+      "status": "adapted",
+      "scope": "保留现有账号登录与供应商账号配置",
+      "target": "web/src/app/(main)/system/llm/page.tsx"
+    },
+    {
+      "source_package": "ui-settings-agent-loop",
+      "status": "adapted",
+      "scope": "保留现有Agent循环设置，接入执行与系统面板",
+      "target": "web/src/app/(main)/system/settings/page.tsx"
+    },
+    {
+      "source_package": "ui-settings-general",
+      "status": "adapted",
+      "scope": "外观、发送键位、过程详情、布局重置",
+      "target": "web/src/components/dsh/workbench-settings.tsx"
+    },
+    {
+      "source_package": "ui-settings-models",
+      "status": "adapted",
+      "scope": "现有模型配置、供应商、故障转移、连接测试接入新设置外壳",
+      "target": "web/src/app/(main)/system/llm/page.tsx"
+    },
+    {
+      "source_package": "ui-settings-plugin-inventory",
+      "status": "partial",
+      "scope": "统一列出内置模块和外部本地插件包，保留MCP/技能/工具入口；不是Cordis npm库存",
+      "target": "web/src/app/(main)/system/extensions/page.tsx"
+    },
+    {
+      "source_package": "ui-settings-plugins",
+      "status": "partial",
+      "scope": "内置与外部设置贡献已接统一注册表，外部设置通过iframe SDK；通用配置存储及Cordis配置协议仍待迁入",
+      "target": "web/src/app/(main)/system/extensions/page.tsx"
+    },
+    {
+      "source_package": "ui-settings-session-log",
+      "status": "adapted",
+      "scope": "保留日志与LLM录制页面，未转换成DSH日志协议",
+      "target": "web/src/app/(main)/function/llm-records/page.tsx"
+    },
+    {
+      "source_package": "ui-settings-shell",
+      "status": "adapted",
+      "scope": "设置壳与终端入口；执行参数仍由ARTEX配置",
+      "target": "web/src/components/dsh/workbench-settings.tsx"
+    },
+    {
+      "source_package": "ui-settings-subagent",
+      "status": "partial",
+      "scope": "保留现有Agent配置，DSH子代理特有设置尚未接入",
+      "target": "web/src/app/(main)/system/agents/page.tsx"
+    },
+    {
+      "source_package": "ui-settings-web-search",
+      "status": "adapted",
+      "scope": "现有联网搜索配置",
+      "target": "web/src/app/(main)/system/settings/page.tsx"
+    },
+    {
+      "source_package": "ui-shortcuts",
+      "status": "adapted",
+      "scope": "命令面板、侧栏、设置、文件、终端与快捷键帮助，模态/终端输入让行",
+      "target": "web/src/components/dsh/workbench-context.tsx"
+    },
+    {
+      "source_package": "ui-sidebar",
+      "status": "adapted",
+      "scope": "单一侧栏、会话列表、搜索、Agent分组、置顶/重命名/批量删除、手机抽屉",
+      "target": "web/src/app/(main)/_components/sidebar/app-sidebar.tsx"
+    },
+    {
+      "source_package": "ui-sidebar-browser",
+      "status": "partial",
+      "scope": "Web iframe、多标签、地址历史、刷新、外部打开；Electron webview和原生浏览器控制尚未接入",
+      "target": "web/src/components/dsh/workbench-dock.tsx"
+    },
+    {
+      "source_package": "ui-sidebar-documentpreview",
+      "status": "partial",
+      "scope": "文本/Markdown/图片/PDF/HTML/CSV/TSV，编辑保存与变更比较；Office转换与XLSX尚未接入",
+      "target": "web/src/components/dsh/workbench-files.tsx"
+    },
+    {
+      "source_package": "ui-sidebar-files",
+      "status": "adapted",
+      "scope": "工作空间目录树、目录跳转、刷新、新建目录、上传",
+      "target": "web/src/components/dsh/workbench-files.tsx"
+    },
+    {
+      "source_package": "ui-sidebar-right",
+      "status": "adapted",
+      "scope": "多标签、去重打开、持久恢复、隐藏保留内容与进程、关闭确认",
+      "target": "web/src/components/dsh/workbench-dock.tsx"
+    },
+    {
+      "source_package": "ui-sidebar-terminal",
+      "status": "partial",
+      "scope": "Unix PTY、xterm、输入/中断/resize、刷新重连、退出状态、主机停止时清理；Windows ConPTY尚未接入",
+      "target": "server/ui_terminal.go"
+    },
+    {
+      "source_package": "ui-skill",
+      "status": "adapted",
+      "scope": "保留现有技能编辑/上传/可见性配置并接入新设置外壳",
+      "target": "web/src/app/(main)/system/skills/page.tsx"
+    },
+    {
+      "source_package": "ui-slots",
+      "status": "adapted",
+      "scope": "用隔离的React context插槽连接会话侧栏，不引入Cordis slots",
+      "target": "web/src/components/dsh/workbench-context.tsx"
+    },
+    {
+      "source_package": "ui-subagent",
+      "status": "partial",
+      "scope": "原任务worker/session浏览与控制保留；DSH子会话树与续聊面板尚未迁入",
+      "target": "web/src/app/(main)/function/tasks/detail/_tabs/sessions-tab.tsx"
+    },
+    {
+      "source_package": "ui-theme",
+      "status": "adapted",
+      "scope": "沿用已有DSH tokens与bridge，适配新增面板、深浅色与减少动态偏好",
+      "target": "web/src/styles/dsh/workbench.css"
+    },
+    {
+      "source_package": "ui-tool",
+      "status": "partial",
+      "scope": "保留当前工具配对/详情/审批卡片；DSH所有工具专用renderer尚未迁入",
+      "target": "web/src/components/transcript.tsx"
+    },
+    {
+      "source_package": "ui-trajectory",
+      "status": "pending",
+      "scope": "DSH轨迹检查视图尚未接入",
+      "target": ""
+    },
+    {
+      "source_package": "ui-user-questions",
+      "status": "pending",
+      "scope": "结构化用户问题与响应协议尚未接入",
+      "target": ""
+    },
+    {
+      "source_package": "ui-workflow-run",
+      "status": "pending",
+      "scope": "DSH工作流执行视图尚未接入",
+      "target": ""
+    },
+    {
+      "source_package": "ui-workspace",
+      "status": "adapted",
+      "scope": "接现有workspace API，不引入DSH workspace entity store",
+      "target": "web/src/components/dsh/workbench-files.tsx"
+    },
+    {
+      "source_package": "ui-model-selection",
+      "status": "adapted",
+      "scope": "迁入DSH原ModelSelect、菜单材质/分组/搜索/键盘；会话/任务直接选择真实模型与按模型档位的持久思考设置",
+      "target": "web/src/components/dsh/inference-control.tsx"
+    },
+    {
+      "source_package": "ui-effort-slider",
+      "status": "adapted",
+      "scope": "参考dsh-effort-slider原EffortPanel：连续拖动、松手吸附、键盘、错误回退、串行合并写入；替换WebGL火焰为原创小助手",
+      "target": "web/src/components/dsh/upstream/model/effort/EffortPanel.tsx"
+    },
+    {
+      "source_package": "ui-task-navigation",
+      "status": "adapted",
+      "scope": "任务工具下拉含10个真实面板及用途说明；模型控制不再藏于折叠栏",
+      "target": "web/src/components/dsh/conversation-header.tsx"
+    },
+    {
+      "source_package": "ui-assistant-character",
+      "status": "adapted",
+      "scope": "原创SVG小助手：待机、思考与执行动效；滑杆同步和减少动态效果支持",
+      "target": "web/src/components/dsh/assistant-sprite.tsx"
+    }
+  ]
+}

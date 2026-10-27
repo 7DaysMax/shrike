@@ -1,0 +1,23 @@
+[
+  {
+    "source": "ui-conversation/src/client/skeleton/HeroShell.module.css",
+    "file": "HeroShell.module.css",
+    "upstream_sha256": "9135bc0f982858c67158f977f205c23382ccc0bfd10e15bce0aca1247002107e",
+    "ported_sha256": "9135bc0f982858c67158f977f205c23382ccc0bfd10e15bce0aca1247002107e",
+    "adaptation": "unchanged"
+  },
+  {
+    "source": "ui-conversation/src/client/skeleton/InputBar.module.css",
+    "file": "InputBar.module.css",
+    "upstream_sha256": "fcc055050300a7e956b69ded186476af5ede2b3ff0c269d6edc640ff49ee551f",
+    "ported_sha256": "fcc055050300a7e956b69ded186476af5ede2b3ff0c269d6edc640ff49ee551f",
+    "adaptation": "unchanged"
+  },
+  {
+    "source": "ui-sidebar/src/client/SidebarRoot.module.css",
+    "file": "SidebarRoot.module.css",
+    "upstream_sha256": "314b546d50d3621beb2bc7faf65a598a2877fa05c5b8352784625b5503f3f7c3",
+    "ported_sha256": "7df471e277f4faa0a7776f729cc7d559daf0ead21481d74e4c7f1c272447e02f",
+    "adaptation": "Windows global caption variable moved to workbench.css for Next CSS Module purity"
+  }
+]
