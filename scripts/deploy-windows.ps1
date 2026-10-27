@@ -91,8 +91,11 @@ $running = $false
 try { & (Join-Path $PgDir "bin\pg_isready.exe") -h 127.0.0.1 -p $Port | Out-Null; $running = ($LASTEXITCODE -eq 0) } catch {}
 if (-not $running) {
   Step "启动 PostgreSQL（127.0.0.1:$Port）"
-  & (Join-Path $PgDir "bin\pg_ctl.exe") -D $PgData -l (Join-Path $Root "pg.log") `
-      -o "-p $Port -c listen_addresses=127.0.0.1" start | Out-Null
+  # 注册成 Windows 服务（开机自启），而不是只起一个后台进程 ——
+  # 通过 SSH/远程会话拉起的进程会随会话结束被杀掉。
+  & (Join-Path $PgDir "bin\pg_ctl.exe") register -N "shrike-postgres" -D $PgData `
+      -S auto -o "-p $Port -c listen_addresses=127.0.0.1" 2>$null | Out-Null
+  Start-Service "shrike-postgres" -ErrorAction SilentlyContinue
   Start-Sleep -Seconds 3
 }
 
@@ -126,7 +129,8 @@ if (-not (Get-NetFirewallRule -DisplayName "SHRIKE $HttpPort" -ErrorAction Silen
 Step "注册计划任务（开机以 SYSTEM 启动）"
 $bat = Join-Path $AppRoot "start.bat"
 if (-not (Test-Path $bat)) { $bat = $exe.FullName }
-schtasks /Create /TN "SHRIKE" /TR "cmd /c `"$bat`"" /SC ONSTART /RU SYSTEM /RL HIGHEST /F | Out-Null
+# cd /d 是必须的：SYSTEM 会话的当前目录是 system32，而 start.bat 用相对路径找 shrike.exe
+schtasks /Create /TN "SHRIKE" /TR "cmd /c cd /d `"$AppRoot`" && start.bat" /SC ONSTART /RU SYSTEM /RL HIGHEST /F | Out-Null
 schtasks /Run /TN "SHRIKE" | Out-Null
 
 # ---------------------------------------------------------------- 自检
