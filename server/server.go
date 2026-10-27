@@ -3874,9 +3874,18 @@ func (s *Server) chat(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if s.chatBusy[t.ID] {
-		s.chatMu.Unlock()
-		writeErr(w, 409, "主 Agent 正在处理上一条消息，请稍候")
-		return
+		// Self-heal: a busy flag with no registered canceller means the previous
+		// turn died without running finishTaskChat (panic / os.Exit path / killed
+		// goroutine). Without this the composer stays rejected forever with
+		// "主 Agent 正在处理上一条消息" while nothing is actually running.
+		if s.chatCancel[t.ID] == nil {
+			delete(s.chatBusy, t.ID)
+			log.Printf("[chat] task %s 残留 busy 标记已清除（无在跑的轮次）", t.ID)
+		} else {
+			s.chatMu.Unlock()
+			writeErr(w, 409, "主 Agent 正在处理上一条消息，请稍候")
+			return
+		}
 	}
 	ctx, cancel := context.WithCancelCause(s.ctx)
 	ctx = intercept.WithReviewContext(ctx, "", intercept.ReviewBackground{Source: intercept.BackgroundUserMessage, Text: req.Message})

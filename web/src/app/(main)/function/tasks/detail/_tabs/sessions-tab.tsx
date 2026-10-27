@@ -1264,7 +1264,26 @@ export function SessionsTab({ taskId, mainOnly = false, embedded = false, readOn
   const mainBusy = isMain && (sending || mainChatRunning === true || (mainChatRunning === null && !activeSettled && recentLive(activeKey))); 
   const taskQueue=useChatQueue(Number(taskId),isMain&&!mainBusy&&!readOnly&&!!activeState?.loaded,()=>{}, {
    namespace:`task:${taskId}:main:${active.seg??0}`,
-   send:async(text,atts)=>{setSending(true);try{const{mode}=await api.chat(text,taskId,atts.length?atts:undefined,active.seg??0);chatStatusRequestRef.current++;setMainChatRunning(mode==="llm");}finally{setSending(false);}}
+   send:async(text,atts)=>{
+     setSending(true);
+     // Optimistic bubble: the record is only durable once the server writes it, so
+     // render the human turn immediately and reconcile with the real row when SSE
+     // delivers it. Without this a rejected/slow POST looked like "消息发出去就消失".
+     const seg=active.seg??0, key=`main:${seg}`, localSeq=-Date.now();
+     const optimistic={seq:localSeq,worker:"mainagent",ts:new Date().toISOString(),kind:"user",summary:text,is_error:false,metadata:{},main_seg:seg} as Activity;
+     patchStore(key,s=>({...s,items:mergeBySeq(s.items,[optimistic])}));
+     try{
+       const{mode}=await api.chat(text,taskId,atts.length?atts:undefined,seg);
+       chatStatusRequestRef.current++;setMainChatRunning(mode==="llm");
+       // 真实记录到达后清掉占位（负 seq 永远不会被服务端使用）
+       setTimeout(()=>patchStore(key,s=>({...s,items:s.items.filter(i=>i.seq>0)})),15000);
+     }catch(e){
+       const reason=(e as Error).message||"未知错误";
+       toast.error(`发送失败：${reason}`,{id:`chat-send-${localSeq}`});
+       patchStore(key,s=>({...s,items:s.items.map(i=>i.seq===localSeq?{...i,is_error:true,summary:`${text}\n（发送失败：${reason}）`}:i)}));
+       throw e;
+     }finally{setSending(false);}
+   }
   });
   // 折叠态（手机端）标题栏要替代整张列表：显示当前会话名 + 其它会话的未读合计，
   // 否则收起后既不知道自己在看哪个会话，也看不到别处有新消息。

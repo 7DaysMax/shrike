@@ -1,9 +1,12 @@
 package server
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"log"
 	"math"
 	"net/http"
@@ -401,10 +404,6 @@ func (s *Server) pgSendConversationMessage(w http.ResponseWriter, r *http.Reques
 	if !ok {
 		return
 	}
-	if c.TaskID != nil {
-		writeErr(w, 409, "该会话已进入任务模式，请使用任务主会话继续")
-		return
-	}
 	var req struct {
 		Message     string           `json:"message"`
 		Attachments []chatAttachment `json:"attachments,omitempty"` // 方式1 上传的文件(路径相对会话工作目录)
@@ -416,6 +415,22 @@ func (s *Server) pgSendConversationMessage(w http.ResponseWriter, r *http.Reques
 	msg := strings.TrimSpace(req.Message)
 	if msg == "" && len(req.Attachments) == 0 {
 		writeErr(w, 400, "消息不能为空")
+		return
+	}
+	// A conversation that was converted into a task keeps this URL in bookmarks and
+	// in /chat/?c=<id>. Forwarding to the task's main-agent chat instead of 409ing
+	// means the composer on that page can never silently swallow a message: the
+	// user asked the task its main agent, which is what they meant to talk to.
+	if c.TaskID != nil {
+		taskID := strconv.FormatInt(*c.TaskID, 10)
+		body, _ := json.Marshal(map[string]any{"message": msg, "attachments": req.Attachments})
+		r2 := r.Clone(r.Context())
+		q := r2.URL.Query()
+		q.Set("task", taskID)
+		r2.URL.RawQuery = q.Encode()
+		r2.Body = io.NopCloser(bytes.NewReader(body))
+		r2.ContentLength = int64(len(body))
+		s.chat(w, r2)
 		return
 	}
 	agentMessage, ok := s.prepareChatMentionMessage(w, msg)
